@@ -1,18 +1,16 @@
-import 'jest'
-import * as esbuild from 'esbuild'
-import path from 'path'
+import "jest";
+import * as esbuild from "esbuild";
+import path from "path";
 
-import stylePlugin from '../../src'
+import stylePlugin from "../../src/index";
 
-const basePath = './test/with_imports'
+const basePath = "./test/with_imports";
 
-test('Test @import', async () => {
-  await esbuild.build({
-    entryPoints: [path.join(basePath, 'src/index.ts')],
-    outdir: path.join(basePath, 'dist'),
-    bundle: true,
-    plugins: [
-      stylePlugin()
-    ]
-  })
-})
+test("Test @import", async () => {
+    await esbuild.build({
+        entryPoints: [path.join(basePath, "src/index.ts")],
+        outdir: path.join(basePath, "dist"),
+        bundle: true,
+        plugins: [stylePlugin()],
+    });
+});

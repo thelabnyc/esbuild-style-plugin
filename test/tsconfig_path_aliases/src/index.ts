@@ -1,2 +1,2 @@
-import '@sub/styles.css'
-import '@sub/sub'
+import "@sub/styles.css";
+import "@sub/sub";

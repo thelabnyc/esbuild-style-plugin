@@ -1,0 +1,97 @@
+stages:
+  - lint
+  - test
+  - docs
+  - release
+
+variables:
+  NODE_VERSION: "20"
+
+.rules_mrs_and_protected:
+  - if: $CI_PIPELINE_SOURCE == "schedule"
+    when: never
+  - if: $CI_COMMIT_BRANCH && $CI_COMMIT_REF_PROTECTED == "true"
+  - if: $CI_COMMIT_TAG && $CI_COMMIT_REF_PROTECTED == "true"
+  - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+
+.rules_only_mrs:
+  - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+
+.rules_only_master:
+  - if: $CI_PIPELINE_SOURCE == "schedule"
+    when: never
+  - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $CI_COMMIT_REF_PROTECTED == "true"
+
+.rules_only_protected_tags:
+  - if: $CI_COMMIT_TAG && $CI_COMMIT_REF_PROTECTED == "true"
+
+.needs_all_tests:
+  - precommit
+  - test:js
+
+.base_job: &base_job
+  image: "node:${NODE_VERSION}"
+  variables:
+    NODE_ENV: development
+
+.dev_dependency_job: &dev_dependency_job
+  <<: *base_job
+  before_script:
+    - npm ci
+  cache:
+    key: devdependencies-${NODE_VERSION}
+    paths:
+      - node_modules/
+
+.release_job: &release_job
+  rules:
+    - !reference [.rules_only_protected_tags]
+  stage: release
+  needs:
+    - !reference [.needs_all_tests]
+
+precommit:
+  rules:
+    - !reference [.rules_mrs_and_protected]
+  stage: lint
+  needs: []
+  image: registry.gitlab.com/thelabnyc/dind:22.04
+  variables:
+    PRE_COMMIT_HOME: ${CI_PROJECT_DIR}/.cache/pre-commit
+  script:
+    - pip3 install pre-commit
+    - pre-commit run --all-files
+  cache:
+    paths:
+      - ${PRE_COMMIT_HOME}
+
+test:js:
+  <<: *dev_dependency_job
+  rules:
+    - !reference [.rules_mrs_and_protected]
+  stage: test
+  needs: []
+  script:
+    - npm run check
+    - npm run build
+    - npm run test -- --ci --coverage
+  coverage: '/All files[^|]*\|[^|]*\s+([\d\.]+)/'
+
+release:js:
+  <<: *dev_dependency_job
+  <<: *release_job
+  script:
+    - echo "@thelabnyc:registry=https://${CI_SERVER_HOST}/api/v4/projects/${CI_PROJECT_ID}/packages/npm/" > .npmrc
+    - echo "//${CI_SERVER_HOST}/api/v4/projects/${CI_PROJECT_ID}/packages/npm/:_authToken=${CI_JOB_TOKEN}" >> .npmrc
+    - npm publish
+
+release:gitlab:
+  <<: *release_job
+  image: registry.gitlab.com/gitlab-org/release-cli:latest
+  script:
+    - echo 'noop'
+  release:
+    name: "Release $CI_COMMIT_TAG"
+    description: "Release $CI_COMMIT_TAG. Tagged by $GITLAB_USER_LOGIN"
+    tag_name: "$CI_COMMIT_TAG"
+    ref: "$CI_COMMIT_TAG"

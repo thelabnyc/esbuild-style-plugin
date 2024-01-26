@@ -1,5 +1,2 @@
-import './styles.css'
-import './styles.sass'
-import './styles.scss'
-import './styles.styl'
-import './styles.less'
+import "./styles.css";
+import "./styles.scss";

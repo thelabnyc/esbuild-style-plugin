@@ -1,50 +1,51 @@
 {
-  "name": "esbuild-style-plugin",
+  "name": "@thelabnyc/esbuild-style-plugin",
   "version": "1.6.3",
   "description": "Another esbuild plugin for your styling with CSS,SASS,LESS,STYLUS",
   "types": "./dist/index.d.ts",
   "main": "./dist/index",
-  "browser": "./dist/index.js",
-  "module": "./dist/index.mjs",
   "files": [
     "dist"
   ],
   "scripts": {
+    "check:types": "tsc --noEmit",
+    "check": "npm run check:types",
+    "build:css-type-defs": "typed-scss-modules '{./**/*.module.scss,./**/*.module.css}' --exportType=default --nameFormat=none",
+    "build:dist": "tsc --project tsconfig.publish.json",
+    "build": "npm run build:css-type-defs && npm run build:dist",
+    "prepack": "npm run build",
     "test-watch": "ts-node ./test/watch/index.ts",
-    "test": "jest",
-    "build": "ts-node bundle.ts && tsc --emitDeclarationOnly --outDir dist",
-    "prepublishOnly": "npm run build"
+    "test": "jest"
   },
-  "author": "g45t345rt",
+  "author": "thelabdev <thelabdev@thelabnyc.com>",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/g45t345rt/esbuild-style-plugin"
+    "url": "git+https://gitlab.com/thelabnyc/esbuild-style-plugin"
   },
-  "homepage": "https://github.com/g45t345rt/esbuild-style-plugin#readme",
+  "homepage": "https://gitlab.com/thelabnyc/esbuild-style-plugin",
   "license": "ISC",
   "dependencies": {
-    "@types/less": "^3.0.3",
-    "@types/stylus": "^0.48.42",
     "glob": "^10.2.2",
     "postcss": "^8.4.31",
-    "postcss-modules": "^6.0.0"
+    "postcss-modules": "^6.0.0",
+    "sass": "^1.70.0"
   },
   "devDependencies": {
+    "@tsconfig/node20": "^20.1.2",
     "@types/glob": "^8.1.0",
     "@types/jest": "^29.5.1",
     "@types/node": "^18.16.3",
+    "@types/postcss-import": "^14.0.3",
     "@types/postcss-preset-env": "^7.7.0",
     "autoprefixer": "^10.4.14",
     "esbuild": "^0.17.18",
     "jest": "^29.5.0",
-    "less": "^4.2.0",
     "postcss-import": "^15.1.0",
     "postcss-preset-env": "^8.3.2",
     "postcss-scss": "^4.0.6",
-    "sass": "^1.70.0",
-    "stylus": "^0.62.0",
     "tailwindcss": "^3.3.2",
     "ts-jest": "^29.1.0",
-    "ts-node": "^10.9.1"
+    "ts-node": "^10.9.1",
+    "typed-scss-modules": "^8.0.0"
   }
 }

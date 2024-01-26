@@ -1,2 +1,2 @@
-const styles = require('./styles.module.sass')
-console.log(styles)
+const styles = require("./styles.module.scss");
+console.log(styles);

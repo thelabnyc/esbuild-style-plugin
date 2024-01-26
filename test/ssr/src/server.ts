@@ -1,3 +1,3 @@
-import client from './client'
+import client from "./client";
 
-console.log(client)
+console.log(client);

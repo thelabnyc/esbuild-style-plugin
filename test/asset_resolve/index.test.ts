@@ -1,19 +1,17 @@
-import 'jest'
-import * as esbuild from 'esbuild'
-import path from 'path'
+import "jest";
+import * as esbuild from "esbuild";
+import path from "path";
 
-import stylePlugin from '../../src'
+import stylePlugin from "../../src/index";
 
-const basePath = './test/asset_resolve'
+const basePath = "./test/asset_resolve";
 
-test('Test asset resolve', async () => {
-  await esbuild.build({
-    entryPoints: [path.join(basePath, 'src/index.ts')],
-    outdir: path.join(basePath, 'dist'),
-    bundle: true,
-    loader: { '.png': 'file' },
-    plugins: [
-      stylePlugin()
-    ]
-  })
-})
+test("Test asset resolve", async () => {
+    await esbuild.build({
+        entryPoints: [path.join(basePath, "src/index.ts")],
+        outdir: path.join(basePath, "dist"),
+        bundle: true,
+        loader: { ".png": "file" },
+        plugins: [stylePlugin()],
+    });
+});

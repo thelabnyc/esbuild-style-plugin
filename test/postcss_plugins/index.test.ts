@@ -1,28 +1,27 @@
-import 'jest'
-import * as esbuild from 'esbuild'
-import path from 'path'
-import autoprefixer from 'autoprefixer'
-import presetEnv from 'postcss-preset-env'
+import "jest";
+import * as esbuild from "esbuild";
+import path from "path";
+import autoprefixer from "autoprefixer";
+import presetEnv from "postcss-preset-env";
 
-import scss from 'postcss-scss'
+import scss from "postcss-scss";
 
-import stylePlugin from '../../src'
+import stylePlugin from "../../src/index";
 
-const basePath = './test/postcss_plugins'
+const basePath = "./test/postcss_plugins";
 
-test('PostCSS plugins', async () => {
-  await esbuild.build({
-    entryPoints: [path.join(basePath, 'src/index.ts')],
-    outdir: path.join(basePath, 'dist'),
-    bundle: true,
-    plugins: [stylePlugin({
-      postcss: {
-        parser: scss,
+test("PostCSS plugins", async () => {
+    await esbuild.build({
+        entryPoints: [path.join(basePath, "src/index.ts")],
+        outdir: path.join(basePath, "dist"),
+        bundle: true,
         plugins: [
-          autoprefixer,
-          presetEnv({ stage: 0 })
-        ]
-      }
-    })]
-  })
-})
+            stylePlugin({
+                postcss: {
+                    parser: scss,
+                    plugins: [autoprefixer, presetEnv({ stage: 0 })],
+                },
+            }),
+        ],
+    });
+});

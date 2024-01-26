@@ -1,4 +1,4 @@
-import cssStyles from './styles.module.css'
-import sassStyles from './styles.module.sass'
+import cssStyles from "./styles.module.css";
+import sassStyles from "./styles.module.scss";
 
-console.log(cssStyles, sassStyles)
+console.log(cssStyles, sassStyles);
