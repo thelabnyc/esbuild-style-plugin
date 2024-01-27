@@ -1,5 +1,5 @@
-import "jest";
 import * as esbuild from "esbuild";
+import "jest";
 import path from "path";
 
 import stylePlugin from "../../src/index";

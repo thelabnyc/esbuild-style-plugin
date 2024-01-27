@@ -1,8 +1,9 @@
-import path from "node:path";
 import fs from "node:fs";
+import path from "node:path";
+
 import { globSync } from "glob";
-import sass from "sass";
 import { AcceptedPlugin, Result } from "postcss";
+import sass from "sass";
 
 type SassOptions = sass.LegacySharedOptions<"sync">;
 

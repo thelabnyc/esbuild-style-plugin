@@ -55,7 +55,7 @@ precommit:
     - !reference [.rules_mrs_and_protected]
   stage: lint
   needs: []
-  image: registry.gitlab.com/thelabnyc/dind:22.04
+  image: registry.gitlab.com/thelabnyc/python:py311-node20
   variables:
     PRE_COMMIT_HOME: ${CI_PROJECT_DIR}/.cache/pre-commit
   script:
@@ -64,6 +64,7 @@ precommit:
   cache:
     paths:
       - ${PRE_COMMIT_HOME}
+      - node_modules
 
 test:js:
   <<: *dev_dependency_job

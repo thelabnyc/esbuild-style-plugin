@@ -1,7 +1,7 @@
-import "jest";
-import * as esbuild from "esbuild";
-import path from "path";
 import { execFileSync } from "child_process";
+import * as esbuild from "esbuild";
+import "jest";
+import path from "path";
 
 import stylePlugin from "../../src/index";
 

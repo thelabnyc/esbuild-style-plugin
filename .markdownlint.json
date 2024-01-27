@@ -1,11 +1,1 @@
-{
-    "code-block-style": false,
-    "line-length": false,
-    "list-marker-space": false,
-    "no-inline-html": {
-        "allowed_elements": ["dl", "dd", "dt", "figure", "figcaption", "style"]
-    },
-    "ul-indent": {
-        "indent": 4
-    }
-}
+./node_modules/@thelabnyc/standards/.markdownlint.json
