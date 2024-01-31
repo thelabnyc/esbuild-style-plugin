@@ -1,6 +1,6 @@
+import { execFileSync } from "child_process";
 import "jest";
 import path from "path";
-import { execFileSync } from "child_process";
 
 const basePath = "./test/using_dist";
 

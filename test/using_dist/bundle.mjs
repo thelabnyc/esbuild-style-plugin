@@ -1,4 +1,5 @@
 import esbuild from "esbuild";
+
 import stylePlugin from "../../dist/index.js";
 
 esbuild.build({
