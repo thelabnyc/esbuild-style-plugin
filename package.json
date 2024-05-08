@@ -17,7 +17,7 @@
     "test-watch": "ts-node ./test/watch/index.ts",
     "test": "jest"
   },
-  "author": "thelab <tempur-dev@thelab.co>",
+  "author": "thelab <thelabdev@thelab.co>",
   "repository": {
     "type": "git",
     "url": "git+https://gitlab.com/thelabnyc/esbuild-style-plugin"
