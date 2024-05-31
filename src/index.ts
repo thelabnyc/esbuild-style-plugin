@@ -1,6 +1,7 @@
 import { createHash } from "node:crypto";
 import path from "node:path";
 
+import CssModulesOptions from "./postcssModulesOptions";
 import {
     OnLoadArgs,
     OnLoadResult,
@@ -11,7 +12,6 @@ import {
 import postcss, { AcceptedPlugin, ProcessOptions } from "postcss";
 import cssModules from "postcss-modules";
 
-import CssModulesOptions from "./postcssModulesOptions";
 import { RenderOptions, getPostCSSWatchFiles, renderStyle } from "./utils";
 
 interface PostCSS extends ProcessOptions {
