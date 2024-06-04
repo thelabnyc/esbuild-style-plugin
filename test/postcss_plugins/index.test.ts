@@ -2,7 +2,6 @@ import autoprefixer from "autoprefixer";
 import * as esbuild from "esbuild";
 import "jest";
 import path from "path";
-import presetEnv from "postcss-preset-env";
 import scss from "postcss-scss";
 
 import stylePlugin from "../../src/index";
@@ -18,7 +17,7 @@ test("PostCSS plugins", async () => {
             stylePlugin({
                 postcss: {
                     parser: scss,
-                    plugins: [autoprefixer, presetEnv({ stage: 0 })],
+                    plugins: [autoprefixer],
                 },
             }),
         ],
