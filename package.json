@@ -24,6 +24,9 @@
   },
   "homepage": "https://gitlab.com/thelabnyc/esbuild-style-plugin",
   "license": "ISC",
+  "overrides": {
+    "prettier": "~3.1.0"
+  },
   "dependencies": {
     "glob": "^11.0.0",
     "postcss": "^8.4.39",
