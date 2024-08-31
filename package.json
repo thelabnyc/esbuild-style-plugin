@@ -1,6 +1,6 @@
 {
   "name": "@thelabnyc/esbuild-style-plugin",
-  "version": "1.7.1-b0",
+  "version": "1.7.1",
   "description": "Another esbuild plugin for your styling with CSS,SASS,LESS,STYLUS",
   "types": "./dist/index.d.ts",
   "main": "./dist/index",

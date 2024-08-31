@@ -1,5 +1,11 @@
 # Changes
 
+## v1.7.1 (2024-08-31)
+
+### Fix
+
+-   **deps**: update dependency postcss to ^8.4.41
+
 ## v1.7.1-b0 (2024-08-08)
 
 ### Fix
