@@ -28,7 +28,7 @@
     "glob": "^11.0.0",
     "postcss": "^8.4.45",
     "postcss-modules": "^6.0.0",
-    "sass": "^1.77.8"
+    "sass": "^1.78.0"
   },
   "devDependencies": {
     "@thelabnyc/standards": "^0.3.3",
