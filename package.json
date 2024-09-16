@@ -42,7 +42,7 @@
     "jest": "^29.7.0",
     "postcss-import": "^16.1.0",
     "postcss-scss": "^4.0.9",
-    "tailwindcss": "^3.4.10",
+    "tailwindcss": "^3.4.11",
     "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
     "typed-scss-modules": "^8.0.1"
