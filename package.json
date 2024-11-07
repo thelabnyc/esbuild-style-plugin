@@ -31,7 +31,7 @@
     "sass": "^1.80.6"
   },
   "devDependencies": {
-    "@thelabnyc/standards": "^0.3.4",
+    "@thelabnyc/standards": "^0.4.0",
     "@tsconfig/node20": "^20.1.4",
     "@types/glob": "^8.1.0",
     "@types/jest": "^29.5.14",
