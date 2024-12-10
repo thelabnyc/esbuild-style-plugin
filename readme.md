@@ -2,14 +2,14 @@
 
 Another esbuild plugin for your styling.
 
--   Supports Sass as a preprocessor
--   Handles CSS modules automatically with PostCSS
--   You can include PostCSS plugins (autoprefixer, preset-env)
--   Support PostCSS/TailwindCSS dependencies for watching files - <https://github.com/postcss/postcss/blob/main/docs/guidelines/plugin.md#3-dependencies>
--   Supported server-side rendering.
--   Includes d.ts files in dist
--   Support esbuild watch
--   Written in Typescript with maintainable code
+- Supports Sass as a preprocessor
+- Handles CSS modules automatically with PostCSS
+- You can include PostCSS plugins (autoprefixer, preset-env)
+- Support PostCSS/TailwindCSS dependencies for watching files - <https://github.com/postcss/postcss/blob/main/docs/guidelines/plugin.md#3-dependencies>
+- Supported server-side rendering.
+- Includes d.ts files in dist
+- Support esbuild watch
+- Written in Typescript with maintainable code
 
 ## Install
 
@@ -29,14 +29,14 @@ esbuild.build({
 
 ### Config
 
--   `extract` default to true
--   `cssModulesMatch` match `.module.` by default
--   `cssModulesOptions` <https://github.com/madyankin/postcss-modules#usage>
--   `renderOptions`
-    -   `sassOptions` <https://sass-lang.com/documentation/js-api/interfaces/legacysharedoptions/>
--   `postcss`
-    -   `plugins` array of postcss accepted plugins
-    -   `parser` | `syntax` parse source css - use with postcss-scss
+- `extract` default to true
+- `cssModulesMatch` match `.module.` by default
+- `cssModulesOptions` <https://github.com/madyankin/postcss-modules#usage>
+- `renderOptions`
+    - `sassOptions` <https://sass-lang.com/documentation/js-api/interfaces/legacysharedoptions/>
+- `postcss`
+    - `plugins` array of postcss accepted plugins
+    - `parser` | `syntax` parse source css - use with postcss-scss
 
 ## CSS Modules
 
