@@ -43,7 +43,7 @@
     "postcss-import": "^16.1.0",
     "postcss-scss": "^4.0.9",
     "tailwindcss": "^3.4.17",
-    "ts-jest": "^29.3.1",
+    "ts-jest": "^29.3.2",
     "ts-node": "^10.9.2",
     "typed-scss-modules": "^8.1.1"
   }
