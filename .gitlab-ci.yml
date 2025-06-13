@@ -55,7 +55,7 @@ precommit:
     - !reference [.rules_mrs_and_protected]
   stage: lint
   needs: []
-  image: registry.gitlab.com/thelabnyc/python:3.13.747-node20@sha256:46e89c06e6baabb720da539fe0d3ec3b8d8e27c4086abead3b7f9ed0f0565212
+  image: registry.gitlab.com/thelabnyc/python:3.13.753-node20@sha256:af25dda517140b56145387d669e076b490bae6c1869f5e54b66fc8d208f86bda
   variables:
     PRE_COMMIT_HOME: ${CI_PROJECT_DIR}/.cache/pre-commit
   script:
