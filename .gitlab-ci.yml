@@ -5,7 +5,7 @@ stages:
   - release
 
 variables:
-  NODE_VERSION: "20"
+  NODE_VERSION: "24"
 
 .rules_mrs_and_protected:
   - if: $CI_PIPELINE_SOURCE == "schedule"
@@ -55,7 +55,7 @@ precommit:
     - !reference [.rules_mrs_and_protected]
   stage: lint
   needs: []
-  image: registry.gitlab.com/thelabnyc/python:3.13.983-node20@sha256:1e92df1cc0713e971f593072588e555bf2b8dc6ea3a1eec7e8c7966216fb390f
+  image: registry.gitlab.com/thelabnyc/python:3.13.983-node24@sha256:8bbc7b3ee1bfa65301691e41179efa7fc3080b33bf64a0811ac1e3cbf3f059a0
   variables:
     PRE_COMMIT_HOME: ${CI_PROJECT_DIR}/.cache/pre-commit
   script:
