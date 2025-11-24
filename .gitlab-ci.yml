@@ -25,6 +25,9 @@ variables:
 .rules_only_protected_tags:
   - if: $CI_COMMIT_TAG && $CI_COMMIT_REF_PROTECTED == "true"
 
+include:
+  - component: gitlab.com/thelabnyc/thelab-ci-components/review@0.6.0
+
 .needs_all_tests:
   - precommit
   - test:js
