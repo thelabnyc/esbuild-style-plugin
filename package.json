@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "@thelabnyc/standards": "0.5.0",
-    "@tsconfig/node20": "20.1.8",
+    "@tsconfig/node24": "24.0.3",
     "@types/glob": "9.0.0",
     "@types/jest": "30.0.0",
     "@types/node": "22.19.1",
