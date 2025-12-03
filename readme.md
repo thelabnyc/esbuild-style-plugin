@@ -33,7 +33,7 @@ esbuild.build({
 - `cssModulesMatch` match `.module.` by default
 - `cssModulesOptions` <https://github.com/madyankin/postcss-modules#usage>
 - `renderOptions`
-    - `sassOptions` <https://sass-lang.com/documentation/js-api/interfaces/legacysharedoptions/>
+    - `sassOptions` <https://sass-lang.com/documentation/js-api/interfaces/options/>
 - `postcss`
     - `plugins` array of postcss accepted plugins
     - `parser` | `syntax` parse source css - use with postcss-scss

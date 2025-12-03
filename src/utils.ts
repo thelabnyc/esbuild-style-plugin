@@ -1,11 +1,12 @@
 import fs from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 import { globSync } from "glob";
 import { AcceptedPlugin, Result } from "postcss";
 import sass from "sass";
 
-type SassOptions = sass.LegacySharedOptions<"sync">;
+type SassOptions = sass.Options<"sync">;
 
 export interface RenderOptions {
     sassOptions?: SassOptions;
@@ -16,51 +17,24 @@ export interface RenderResult {
     watchFiles: string[];
 }
 
-interface SourceMap {
-    version: number;
-    file: string;
-    sourceRoot?: string;
-    sources: string[];
-    sourcesContent?: string[];
-    names: string[];
-    mappings: string;
-}
-
-const getWatchFilesFromSourceMap = (
-    rootFile: string,
-    sourceMap: SourceMap,
-): string[] => {
-    try {
-        const baseDir = path.dirname(rootFile);
-        const watchFiles: string[] = sourceMap.sources.map((srcFile) => {
-            return path.resolve(baseDir, srcFile);
-        });
-        return watchFiles;
-    } catch (e) {
-        console.error(e);
-        return [];
-    }
-};
-
 const renderSass = async (
     filePath: string,
     options: SassOptions,
 ): Promise<RenderResult> => {
-    const sassResult = sass.renderSync({
+    const sassResult = sass.compile(filePath, {
         ...options,
-        file: filePath,
-        // Force sourcemap to be enabled so that we can parse the file sources out of it
-        sourceMap: `${filePath}.map`,
-        sourceMapEmbed: false,
+        // Always enable sourceMap to track loaded files for watch mode
+        sourceMap: true,
     });
-    const sourceMap: SourceMap | null = sassResult.map
-        ? JSON.parse(sassResult.map.toString())
-        : null;
+
+    // Extract watch files from loadedUrls
+    const watchFiles = sassResult.loadedUrls
+        .filter((url) => url.protocol === "file:")
+        .map((url) => fileURLToPath(url));
+
     return {
-        css: sassResult.css.toString(),
-        watchFiles: sourceMap
-            ? getWatchFilesFromSourceMap(filePath, sourceMap)
-            : [],
+        css: sassResult.css,
+        watchFiles,
     };
 };
 
