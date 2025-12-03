@@ -15,7 +15,7 @@ test("Test sassOptions", async () => {
             stylePlugin({
                 renderOptions: {
                     sassOptions: {
-                        outputStyle: "compressed",
+                        style: "compressed",
                     },
                 },
             }),
