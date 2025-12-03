@@ -1,5 +1,23 @@
 # Changes
 
+## v2.0.0 (2025-12-03)
+
+### BREAKING CHANGE
+
+- Users who pass custom `sassOptions` must update their configuration:
+- `outputStyle` is now `style` (only 'expanded' | 'compressed' are valid)
+- `includePaths` is now `loadPaths`
+- `file` option removed (path passed as first argument to compile())
+- Custom `importer` and `functions` signatures have changed
+
+### Feat
+
+- migrate from legacy Sass API to modern compile() API
+
+### Fix
+
+- **deps**: update dependency glob to v13
+
 ## v1.7.2 (2025-09-03)
 
 ### Fix
