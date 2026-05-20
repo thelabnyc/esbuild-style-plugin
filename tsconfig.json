@@ -4,9 +4,9 @@
         "allowJs": true,
         "resolveJsonModule": true,
         "esModuleInterop": true,
-        "baseUrl": ".",
+        "types": ["jest", "node"],
         "paths": {
-            "@sub/*": ["test/tsconfig_path_aliases/src/sub/*"]
+            "@sub/*": ["./test/tsconfig_path_aliases/src/sub/*"]
         }
     },
     "exclude": ["dist", "node_modules"]
