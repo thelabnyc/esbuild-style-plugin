@@ -1,7 +1,6 @@
+import tailwindcss from "@tailwindcss/postcss";
 import * as esbuild from "esbuild";
-import path from "path";
 import atImport from "postcss-import";
-import tailwindcss from "tailwindcss";
 
 import stylePlugin from "../../src/index";
 
@@ -27,14 +26,7 @@ esbuild
             consoleLogPlugin,
             stylePlugin({
                 postcss: {
-                    plugins: [
-                        atImport(),
-                        tailwindcss({
-                            content: [
-                                path.join(`./test/watch/css`, `**/*.{html,js}`),
-                            ],
-                        }),
-                    ],
+                    plugins: [atImport(), tailwindcss()],
                 },
             }),
         ],
