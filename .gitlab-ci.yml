@@ -9,7 +9,7 @@ stages:
   - release
 
 variables:
-  NODE_VERSION: "24"
+  NODE_VERSION: "26"
 
 .rules_mrs_and_protected:
   - if: $CI_PIPELINE_SOURCE == "schedule"
