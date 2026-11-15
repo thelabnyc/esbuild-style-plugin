@@ -34,7 +34,7 @@
     "@tailwindcss/postcss": "4.3.5",
     "@thelabnyc/standards": "0.5.1",
     "@thelabnyc/typed-scss-modules": "8.2.4",
-    "@tsconfig/node24": "24.0.5",
+    "@tsconfig/node24": "24.0.6",
     "@types/glob": "9.0.0",
     "@types/jest": "30.0.0",
     "@types/node": "26.6.6",
